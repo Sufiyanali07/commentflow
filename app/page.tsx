@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
-import Breadcrumb from "../components/Breadcrumb";
 import Concept from "../components/Concept";
 import Pillars from "../components/Pillars";
 import PricingSection from "../components/PricingSection";
@@ -25,11 +24,6 @@ export default function Home() {
       <main className="flex-1 w-full">
         {/* 2. Poetic, Spacious Hero Section */}
         <Hero />
-
-        {/* URL-Based SEO Breadcrumb Navigation Bar */}
-        <div className="w-full border-t border-b border-[#833AB4]/08 bg-[#FFFFFF]/60 backdrop-blur-sm sticky top-16 z-20">
-          <Breadcrumb />
-        </div>
 
         {/* 3. The Concept / Narrative Manifesto */}
         <Concept />
