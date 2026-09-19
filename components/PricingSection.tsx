@@ -135,16 +135,20 @@ export default function PricingSection({ onSelectPlan }: { onSelectPlan?: (planN
       <div className="max-w-6xl mx-auto px-4 sm:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#833AB4] font-semibold block mb-3">
-            [ Transparent Pricing Spectrum ]
-          </span>
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-light tracking-tight text-[#262626] leading-tight">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FFFFFF] border border-[#833AB4]/18 shadow-xs mb-4">
+            <span className="w-2 h-2 rounded-full bg-[#F56040] animate-pulse" />
+            <span className="text-xs font-mono uppercase tracking-widest text-[#833AB4] font-bold">
+              03 / Pricing Spectrum (₹)
+            </span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-light tracking-tight text-[#262626] leading-[1.12]">
             Invest in seamless{" "}
-            <span className="font-serif italic font-normal ig-gradient-text">
+            <span className="font-serif italic font-normal ig-gradient-text relative inline-block">
               conversion.
+              <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-gradient-to-r from-[#F56040] to-[#FCAF45] opacity-40 rounded-full" />
             </span>
           </h2>
-          <p className="mt-4 text-[#5E5868] text-base sm:text-lg font-normal">
+          <p className="mt-4 text-[#5E5868] text-base sm:text-lg font-normal max-w-xl mx-auto leading-relaxed">
             Select your volume tier below. Every plan includes a 14-day free trial with zero setup fees.
           </p>
 

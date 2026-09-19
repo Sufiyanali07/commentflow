@@ -172,17 +172,21 @@ export default function Pillars() {
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="max-w-3xl mb-16 sm:mb-20">
-          <span className="text-xs font-mono uppercase tracking-widest ig-gradient-text font-bold block mb-3">
-            [ Core Capabilities ]
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-[#262626] leading-tight">
+        <div className="max-w-4xl mb-16 sm:mb-20">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FFFFFF] border border-[#833AB4]/18 shadow-xs mb-4">
+            <span className="w-2 h-2 rounded-full bg-[#833AB4] animate-pulse" />
+            <span className="text-xs font-mono uppercase tracking-widest text-[#833AB4] font-bold">
+              02 / Core Capabilities
+            </span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-light tracking-tight text-[#262626] leading-[1.12]">
             How CommentFlow works in{" "}
-            <span className="font-serif italic font-normal ig-gradient-text font-bold">
+            <span className="font-serif italic font-normal ig-gradient-text relative inline-block">
               practice.
+              <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-gradient-to-r from-[#833AB4] to-[#E1306C] opacity-40 rounded-full" />
             </span>
           </h2>
-          <p className="mt-4 text-[#5E5868] text-base sm:text-lg font-normal">
+          <p className="mt-4 text-[#5E5868] text-base sm:text-lg font-normal max-w-2xl leading-relaxed">
             Four quiet, powerful workflows that run around the clock to monetize your Instagram engagement.
           </p>
         </div>

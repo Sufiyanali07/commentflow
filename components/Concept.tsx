@@ -32,14 +32,18 @@ export default function Concept() {
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="concept-row max-w-3xl mb-16 sm:mb-20">
-          <span className="text-xs font-mono uppercase tracking-widest ig-gradient-text font-bold block mb-3">
-            [ The Philosophy ]
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-[#262626] leading-tight">
+        <div className="concept-row max-w-4xl mb-16 sm:mb-20">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FFFFFF] border border-[#833AB4]/18 shadow-xs mb-4">
+            <span className="w-2 h-2 rounded-full bg-[#E1306C] animate-pulse" />
+            <span className="text-xs font-mono uppercase tracking-widest text-[#833AB4] font-bold">
+              01 / The Philosophy
+            </span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-light tracking-tight text-[#262626] leading-[1.12]">
             Why modern creators are leaving{" "}
-            <span className="font-serif italic font-normal ig-gradient-text font-bold">
+            <span className="font-serif italic font-normal ig-gradient-text relative inline-block">
               &quot;link in bio&quot;
+              <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-gradient-to-r from-[#E1306C] to-[#F56040] opacity-40 rounded-full" />
             </span>{" "}
             behind.
           </h2>

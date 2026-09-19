@@ -53,24 +53,36 @@ export default function Navbar() {
   const backdropRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Header entrance
+    // Staged GSAP entrance for the modern floating island header
     const ctx = gsap.context(() => {
-      gsap.fromTo(
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      tl.fromTo(
         headerRef.current,
-        { y: -25, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, ease: "power2.out" }
-      );
+        { y: -30, opacity: 0, scale: 0.96 },
+        { y: 0, opacity: 1, scale: 1, duration: 1, delay: 0.1 }
+      )
+        .fromTo(
+          ".nav-brand-logo",
+          { scale: 0, rotate: -45 },
+          { scale: 1, rotate: 0, duration: 0.6, ease: "back.out(1.8)" },
+          "-=0.6"
+        )
+        .fromTo(
+          ".nav-link-btn",
+          { y: 10, opacity: 0 },
+          { y: 0, opacity: 1, stagger: 0.08, duration: 0.5 },
+          "-=0.5"
+        )
+        .fromTo(
+          ".nav-cta-btn",
+          { scale: 0.85, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.6)" },
+          "-=0.4"
+        );
     }, headerRef);
 
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      ctx.revert();
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => ctx.revert();
   }, []);
 
   // GSAP Animation for Mobile Sidebar Open/Close
@@ -160,48 +172,47 @@ export default function Navbar() {
 
   return (
     <>
+      {/* Non-Sticky, Modern Floating Island Header */}
       <header
         ref={headerRef}
-        className={`fixed top-0 left-0 right-0 z-40 w-full transition-all duration-500 ${
-          isScrolled
-            ? "py-3 sm:py-4 bg-[#FAF8FB]/90 backdrop-blur-xl border-b border-[#E8E0EE] shadow-[0_4px_20px_-4px_rgba(193,53,132,0.08)]"
-            : "py-6 sm:py-8 bg-transparent border-b border-transparent"
-        }`}
+        className="relative w-full z-30 pt-6 sm:pt-8 px-4 sm:px-6 select-none"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-8 flex items-center justify-between">
-          {/* Brand */}
-          <a href="#" className="flex items-center gap-2.5 group">
-            <div className="w-4 h-4 rounded-full p-[1.5px] ig-story-ring group-hover:scale-110 transition-transform duration-300">
-              <div className="w-full h-full rounded-full bg-[#FFFFFF]" />
+        <div className="max-w-5xl mx-auto py-2.5 sm:py-3 px-4 sm:px-7 rounded-full bg-[#FFFFFF]/90 border border-[#833AB4]/16 backdrop-blur-2xl shadow-[0_8px_30px_-4px_rgba(131,58,180,0.08)] flex items-center justify-between transition-all duration-300">
+          {/* Brand Logo & Label */}
+          <a href="#" className="flex items-center gap-2.5 group cursor-pointer">
+            <div className="nav-brand-logo w-6 h-6 rounded-full p-[1.5px] ig-story-ring shadow-[0_0_10px_rgba(225,48,108,0.35)] group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
+              <div className="w-full h-full rounded-full bg-[#FFFFFF] flex items-center justify-center">
+                <span className="w-2 h-2 rounded-full bg-[#833AB4]" />
+              </div>
             </div>
             <span className="text-base sm:text-lg font-semibold tracking-tight text-[#262626]">
               Comment<span className="font-serif italic font-normal ig-gradient-text font-bold">Flow</span>
             </span>
           </a>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden md:flex items-center gap-8 lg:gap-10 text-xs sm:text-sm font-medium text-[#5E5868]">
+          {/* Desktop Nav Links with Magnetic-Style Pills */}
+          <nav className="hidden md:flex items-center gap-1.5 lg:gap-2 text-xs font-medium text-[#5E5868]">
             <button
               onClick={() => scrollTo("concept")}
-              className="hover:text-[#E1306C] transition-colors cursor-pointer"
+              className="nav-link-btn px-4 py-1.5 rounded-full hover:bg-[#FAF8FB] hover:text-[#E1306C] border border-transparent hover:border-[#E1306C]/20 transition-all cursor-pointer"
             >
               Concept
             </button>
             <button
               onClick={() => scrollTo("pillars")}
-              className="hover:text-[#833AB4] transition-colors cursor-pointer"
+              className="nav-link-btn px-4 py-1.5 rounded-full hover:bg-[#FAF8FB] hover:text-[#833AB4] border border-transparent hover:border-[#833AB4]/20 transition-all cursor-pointer"
             >
               How It Works
             </button>
             <button
               onClick={() => scrollTo("pricing")}
-              className="hover:text-[#F56040] transition-colors cursor-pointer"
+              className="nav-link-btn px-4 py-1.5 rounded-full hover:bg-[#FAF8FB] hover:text-[#F56040] border border-transparent hover:border-[#F56040]/20 transition-all cursor-pointer"
             >
-              Pricing
+              Pricing (₹)
             </button>
             <button
               onClick={() => scrollTo("contact")}
-              className="hover:text-[#C13584] transition-colors cursor-pointer"
+              className="nav-link-btn px-4 py-1.5 rounded-full hover:bg-[#FAF8FB] hover:text-[#C13584] border border-transparent hover:border-[#C13584]/20 transition-all cursor-pointer"
             >
               Inquiry
             </button>
@@ -211,7 +222,7 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => scrollTo("contact")}
-              className="theme-btn px-5 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs font-semibold tracking-wide flex items-center gap-1.5 cursor-pointer shadow-sm hover:shadow"
+              className="nav-cta-btn theme-btn px-5 sm:px-6 py-2 rounded-full text-xs font-semibold tracking-wide flex items-center gap-1.5 cursor-pointer shadow-md hover:shadow-lg transition-all"
             >
               <span>Request Access</span>
               <ArrowUpRight className="w-3.5 h-3.5 opacity-90" />
