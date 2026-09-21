@@ -222,7 +222,7 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => scrollTo("contact")}
-              className="nav-cta-btn theme-btn px-5 sm:px-6 py-2 rounded-full text-xs font-semibold tracking-wide flex items-center gap-1.5 cursor-pointer shadow-md hover:shadow-lg transition-all"
+              className="nav-cta-btn hidden md:flex theme-btn px-5 sm:px-6 py-2 rounded-full text-xs font-semibold tracking-wide items-center gap-1.5 cursor-pointer shadow-md hover:shadow-lg transition-all"
             >
               <span>Request Access</span>
               <ArrowUpRight className="w-3.5 h-3.5 opacity-90" />
@@ -231,7 +231,7 @@ export default function Navbar() {
             {/* Mobile Hamburger Trigger */}
             <button
               onClick={() => setMobileOpen(true)}
-              className="md:hidden p-2 rounded-full bg-[#FCEDF5] text-[#C13584] hover:bg-[#F5EEFB] transition-colors cursor-pointer"
+              className="md:hidden p-2.5 rounded-full bg-[#FCEDF5] text-[#C13584] hover:bg-[#F5EEFB] transition-colors cursor-pointer"
               aria-label="Open mobile menu"
             >
               <Menu className="w-5 h-5" />
@@ -353,10 +353,10 @@ export default function Navbar() {
             <div className="mobile-drawer-footer pt-6 border-t border-[#262626]/08 space-y-3">
               <button
                 onClick={() => scrollTo("contact")}
-                className="w-full theme-btn py-3.5 rounded-full text-xs font-semibold tracking-wide flex items-center justify-center gap-2 shadow-md cursor-pointer"
+                className="w-full theme-btn py-3.5 rounded-full text-xs font-semibold tracking-wide flex items-center justify-center gap-2 shadow-md hover:shadow-lg cursor-pointer transition-all"
               >
-                <span>Request Private Onboarding</span>
-                <ArrowRight className="w-4 h-4" />
+                <span>Request Access</span>
+                <ArrowUpRight className="w-4 h-4" />
               </button>
 
               <div className="flex items-center justify-center gap-2 text-[11px] text-[#833AB4] font-mono">
